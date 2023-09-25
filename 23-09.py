@@ -3,10 +3,9 @@ print('''Please choose a mode:
     type "b" to create a dictionary of all words in your text''')
 mode = input()
 print('Now, type in your text:')
-text = input()
 
 if mode == 'a':
-    text = text.lower()
+    text = input().lower()
     for i in range(97, 123):
         temp = 0
         for symbol in text:
@@ -15,6 +14,11 @@ if mode == 'a':
         print ("%s х%s"%(chr(i), temp))
 
 elif mode == 'b':
-    print(mode)
+    text = sorted(list(set(input().split(' '))))
+    print(text)
+    for word in text:
+        if len(word) > 2:
+            print(word)
+
 else:
     print ("Please choose either 'a' or 'b'")
