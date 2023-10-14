@@ -1,4 +1,4 @@
-favourites = {'color': 'brown', 'fruit': 'banana', 'drinks': ['hot chocolate', 'tea']}
+favourites = {'color': 'brown', 'fruit': 'banana', 'drinks': ['hot chocolate', 'tea'], 'dct': {1: 1, 2: 2}}
 
 print(favourites['color'])
 print(favourites.get('instrument', 'Not Found'))
