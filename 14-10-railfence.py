@@ -36,9 +36,15 @@ while running:
             
         if event.type == pygame.KEYDOWN:
             if active:
-                read_input(user_text)
+                if event.key == pygame.K_BACKSPACE:
+                    user_text = user_text[:-1]
+                else:
+                    user_text += event.unicode
             if active2:
-                read_input(user_key)
+                if event.key == pygame.K_BACKSPACE:
+                    user_key = user_key[:-1]
+                else:
+                    user_key += event.unicode
 
     screen.fill("black")
 
