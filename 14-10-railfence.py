@@ -1,4 +1,4 @@
-import pygame, sys
+import pygame, sys, railfence
 
 pygame.init()
 screen = pygame.display.set_mode((1280, 720))
@@ -8,6 +8,7 @@ running = True
 font = pygame.font.Font(None, 32)
 user_text = ''
 user_key = ''
+output = ''
 
 active = False
 active2 = False
@@ -40,11 +41,13 @@ while running:
                     user_text = user_text[:-1]
                 else:
                     user_text += event.unicode
-            if active2:
+            elif active2:
                 if event.key == pygame.K_BACKSPACE:
                     user_key = user_key[:-1]
                 else:
                     user_key += event.unicode
+            if event.key == pygame.K_SPACE:
+                output = railfence.encode(user_text*int(user_key), int(user_key))
 
     screen.fill("black")
 
@@ -58,6 +61,10 @@ while running:
     screen.blit(key_surface, (textbox2.x+5, textbox2.y+5))
     textbox.w = max(200, text_surface.get_width()+10)
     textbox2.w = max(200, text_surface.get_width()+10)
+
+    if output != '':
+        output_surface = font.render(output, True, (255, 255, 253))
+        screen.blit(output_surface, (50, 200))
 
     pygame.display.update()
     clock.tick(60)
