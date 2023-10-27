@@ -9,18 +9,20 @@ font = pygame.font.Font(None, 32)
 user_text = ''
 user_key = ''
 output = ''
+btn_txt = 'Encode'
 
 active = False
 active2 = False
 
 textbox = pygame.Rect(50,50,200,32)
 textbox2 = pygame.Rect(50,100,200,32)
+btn = pygame.Rect(50,160,200,32)
 
-def read_input(text):
+'''def read_input(text):
     if event.key == pygame.K_BACKSPACE:
         text = text[:-1]
     else:
-        text += event.unicode
+        text += event.unicode'''
 
 while running:
     for event in pygame.event.get():
@@ -34,6 +36,9 @@ while running:
             if textbox2.collidepoint(event.pos):
                 active = False
                 active2 = True
+            if btn.collidepoint(event.pos):
+                output = ''
+                output += railfence.encode(user_text*int(user_key), int(user_key))
             
         if event.type == pygame.KEYDOWN:
             if active:
@@ -46,29 +51,27 @@ while running:
                     user_key = user_key[:-1]
                 else:
                     user_key += event.unicode
-            if event.key == pygame.K_SPACE:
-                output = railfence.encode(user_text*int(user_key), int(user_key))
 
     screen.fill("black")
 
     pygame.draw.rect(screen, (255, 255, 253), textbox, 1)
     pygame.draw.rect(screen, (255, 255, 253), textbox2, 1)
+    pygame.draw.rect(screen, (110, 110, 110), btn)
 
     text_surface = font.render(user_text, True, (255, 255, 253))
     key_surface = font.render(user_key, True, (255, 255, 253))
+    btn_surface = font.render(btn_txt, True, (255, 255, 253))
+    output_surface = font.render(output, True, (255, 255, 253))
 
     screen.blit(text_surface, (textbox.x+5, textbox.y+5))
     screen.blit(key_surface, (textbox2.x+5, textbox2.y+5))
+    screen.blit(btn_surface, (btn.x+5, btn.y+5))
+    screen.blit(output_surface, (50, 210))
     textbox.w = max(200, text_surface.get_width()+10)
     textbox2.w = max(200, text_surface.get_width()+10)
 
-    if output != '':
-        output_surface = font.render(output, True, (255, 255, 253))
-        screen.blit(output_surface, (50, 200))
-
     pygame.display.update()
     clock.tick(60)
-
 
 
 pygame.quit()
