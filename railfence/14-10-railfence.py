@@ -40,10 +40,10 @@ while running:
                 active2 = True
             if btn.collidepoint(event.pos):
                 output = ''
-                output += railfence.encode(user_text*int(user_key), int(user_key))
+                output += railfence.encode(user_text, int(user_key))
             if btn2.collidepoint(event.pos):
                 output = ''
-                output += railfence.decode(user_text*int(user_key), int(user_key))
+                output += railfence.decode(user_text, int(user_key))
             
         if event.type == pygame.KEYDOWN:
             if active:
