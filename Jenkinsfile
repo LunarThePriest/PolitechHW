@@ -1,3 +1,2 @@
-#! /bin/bash
 echo "===uptime==="
-uptime
+sh uptime
