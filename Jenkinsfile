@@ -3,8 +3,8 @@ pipeline{
   stages{
     stage('Run'){
       steps{
-        echo "===uptime==="
-        sh uptime
+        echo '===uptime==='
+        sh 'uptime'
       }
     }
   } 
