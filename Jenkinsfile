@@ -1,2 +1,10 @@
-echo "===uptime==="
-sh uptime
+pipeline{
+  stages{
+    stage('Run'){
+      steps{
+        echo "===uptime==="
+        sh uptime
+      }
+    }
+  } 
+}
