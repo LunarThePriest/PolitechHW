@@ -10,7 +10,7 @@ pipeline{
     stage('Uptime from script'){
       steps{
         echo '==========uptime from script=========='
-        sh "chmod +x ./jenkins/test.sh"
+        sh "chmod +x -R ${env.WORKSPACE}
         sh './script.sh'
       }
     }
