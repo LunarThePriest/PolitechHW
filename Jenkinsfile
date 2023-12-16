@@ -10,7 +10,7 @@ pipeline{
     stage('Uptime from script'){
       steps{
         echo '==========uptime from script=========='
-        sh 'PolitechHW/script.sh'
+        sh './script.sh'
       }
     }
   } 
